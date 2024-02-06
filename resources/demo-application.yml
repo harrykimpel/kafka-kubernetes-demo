@@ -13,11 +13,12 @@ spec:
     spec:
       containers:
       - name: kafka-kubernetes-demo
-        image: kube/kafka-kubernetes-demo:latest
-        imagePullPolicy: Never
+        image: harryacr.azurecr.io/kafka-kubernetes-demo:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 9001
-
+      imagePullSecrets:
+        - name: acr-secret
 ---
 apiVersion: v1
 kind: Service

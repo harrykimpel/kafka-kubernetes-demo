@@ -18,9 +18,9 @@ public class KafkaProducer {
 
     @Autowired
     private final KafkaTemplate kafkaTemplate;
-    
-    @Trace(dispatcher = true)
+
     public SendResult sendMessage(String key, Object payload) throws Exception {
+
         final ProducerRecord<String, Object> record = new ProducerRecord<>(properties.getOutboundTopic(), key, payload);
         return (SendResult) kafkaTemplate.send(record).get();
     }
